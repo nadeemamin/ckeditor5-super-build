@@ -32,11 +32,16 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
 
+import Comments from '@ckeditor/ckeditor5-comments/src/comments';
+import TrackChanges from '@ckeditor/ckeditor5-track-changes/src/trackchanges';
+
 class ClassicEditor extends ClassicEditorBase {}
 class InlineEditor extends InlineEditorBase {}
 
 // Plugins to include in the build.
 const plugins = [
+	Comments, 
+	TrackChanges,
 	Essentials,
 	UploadAdapter,
 	Autoformat,

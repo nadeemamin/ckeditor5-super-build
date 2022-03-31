@@ -68,3 +68,74 @@ ClassicEditor
 ## License
 
 Licensed under the terms of [GNU General Public License Version 2 or later](http://www.gnu.org/licenses/gpl.html). For full details about the license, please check the `LICENSE.md` file or [https://ckeditor.com/legal/ckeditor-oss-license](https://ckeditor.com/legal/ckeditor-oss-license).
+
+## Steps to Create Super Build (Classic Editor + Inline Editor)
+
+1. Clone classic editor repo using following command:
+```bash
+git clone -b stable https://github.com/ckeditor/ckeditor5
+```
+2. Navigate to ckeditor5/packages/ckeditor5-build-classic
+
+3. Run 
+```bash
+npm install
+```
+4. Add inline editor to classic build using following command
+```bash
+npm install --save @ckeditor/ckeditor5-editor-inline
+```
+5. Add InlineEditorBase inside ckeditor.js and export both classic and inline editor.
+```js
+export default {
+	ClassicEditor, InlineEditor
+}
+```
+6. Changed **library: 'ClassicEditor'** to **library: 'CKEDITOR'** inside webpack.config.js
+
+7. Run
+```bash
+npm run build
+```
+8. Add required plugins in ckeditor.js file
+```bash
+npm install --save @ckeditor/ckeditor5-comments
+npm install --save @ckeditor/ckeditor5-track-changes
+```
+```js
+import Comments from '@ckeditor/ckeditor5-comments/src/comments';
+import TrackChanges from '@ckeditor/ckeditor5-track-changes/src/trackchanges';
+```
+
+```js
+const plugins = [
+	Comments, 
+	TrackChanges,
+	Essentials,
+	UploadAdapter,
+	Autoformat,
+	Bold,
+	Italic,
+	BlockQuote,
+	CKFinder,
+	CloudServices,
+	EasyImage,
+	Heading,
+	Image,
+	ImageCaption,
+	ImageStyle,
+	ImageToolbar,
+	ImageUpload,
+	Indent,
+	Link,
+	List,
+	MediaEmbed,
+	Paragraph,
+	PasteFromOffice,
+	Table,
+	TableToolbar,
+	TextTransformation
+];
+ClassicEditor.builtinPlugins = plugins;
+InlineEditor.builtinPlugins = plugins;
+```
