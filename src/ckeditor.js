@@ -31,10 +31,11 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+class ClassicEditor extends ClassicEditorBase {}
+class InlineEditor extends InlineEditorBase {}
 
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+const plugins = [
 	Essentials,
 	UploadAdapter,
 	Autoformat,
@@ -60,9 +61,11 @@ ClassicEditor.builtinPlugins = [
 	TableToolbar,
 	TextTransformation
 ];
+ClassicEditor.builtinPlugins = plugins;
+InlineEditor.builtinPlugins = plugins;
 
 // Editor configuration.
-ClassicEditor.defaultConfig = {
+const config = {
 	toolbar: {
 		items: [
 			'heading',
@@ -104,3 +107,9 @@ ClassicEditor.defaultConfig = {
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
+ClassicEditor.defaultConfig = config;
+InlineEditor.defaultConfig = config;
+
+export default {
+	ClassicEditor, InlineEditor
+}
