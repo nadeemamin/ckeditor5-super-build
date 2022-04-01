@@ -31,6 +31,8 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import WProofreader from '@webspellchecker/wproofreader-ckeditor5/src/wproofreader';
 
 import Comments from '@ckeditor/ckeditor5-comments/src/comments';
 import TrackChanges from '@ckeditor/ckeditor5-track-changes/src/trackchanges';
@@ -65,7 +67,9 @@ const plugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Underline,
+	WProofreader 
 ];
 ClassicEditor.builtinPlugins = plugins;
 InlineEditor.builtinPlugins = plugins;
@@ -90,7 +94,9 @@ const config = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'underline',
+			'wproofreader'
 		]
 	},
 	image: {
